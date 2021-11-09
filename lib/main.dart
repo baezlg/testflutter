@@ -58,7 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
       var res = await http.get(Uri.parse("https://csrng.net/csrng/csrng.php?min=1&max=1000"));
       var jsonData = jsonDecode(res.body);
       var num = jsonData[0]["random"];
+
+      List previousNumbers = [];
+      previousNumbers.add(num);
       print(num);
+      print(previousNumbers);
       return num;
   }
 
@@ -80,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: (){
             getRandomData();
           },
-      ),),
+      ),
+      ),
     );
   }
 }
